@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    
+    
+    <div id="orcamento" class="formulario-orcamento">
+        <img class="logoazapfy" src="Logo Azapfy.png" alt="">
+        
+        <h1 class="titulo-orcamento">Calculo de Folha Anual</h1>
+        
+        <form class="form-orcamento" id="orcamentoForm" action="processar_formulario.php" method="post">
+            
+                 
+        
+            <div class="form-control"> 
+                <label for="username">Digite o Nome do Trabalhador</label>
+                <input  placeholder="Digite o Nome..." type="text" id="name" name="name"> 
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small>Mensagem de erro</small>
+            </div>
+    
+            
+        
+            <div class="form-control"> 
+                <label for="email">Digite O cargo do trabalhador</label>
+                <input placeholder="Digite o cargo" type="text" id="email" name="cargo"> 
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small>Mensagem de erro</small>
+            </div>
+        
+            
+        
+            <div class="form-control"> 
+                <label for="telefone">O trabalhador é CLT?</label>
+                <input placeholder="Digite (sim) ou (nao)" type="text" id="telefone" name="clt"> 
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small>Mensagem de erro</small>
+            </div>
+       
+            
+        
+            <div class="form-control"> 
+                <label for="text">Digite o salario Bruto</label>
+                <input placeholder="Digite o salario" type="number" id="salario" name="salario"> 
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small>Mensagem de erro</small>
+            </div>
+
+            <div class="form-control"> 
+                <label for="text">Digite o Numeros de Dias Trabalhados no Ano</label>
+                <input placeholder="Digite o numero de dias" type="number" id="" name="diastrabalhados"> 
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small>Mensagem de erro</small>
+            </div>
+
+            <div class="form-control"> 
+                <label for="text">Digite o Ano De referencia</label>
+                <input placeholder="Digite o ano " type="text" id="" name="ano"> 
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small>Mensagem de erro</small>
+            </div>
+
+            <div class="form-control"> 
+                <label for="text">Digite a Carga Horaria diaria</label>
+                <input placeholder="Digite a carga em horas de um dia trabalhado" type="text" id="" name="cargahoraria"> 
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small>Mensagem de erro</small>
+            </div>
+
+            <div class="form-control"> 
+                <label for="text">O trabalhador possui Periculosidade ?</label>
+                <input placeholder="Digite (sim) ou (nao)" type="text" id="" name="periculosidade"> 
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small>Mensagem de erro</small>
+            </div>
+            
+            <div class="form-control"> 
+                <label for="text">O trabalhador possui insalubridade?</label>
+                <input placeholder="Digite (sim) ou (nao)" type="text" id="" name="insalubridade"> 
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small>Mensagem de erro</small>
+            </div>
+
+            <div class="form-control"> 
+                <label for="text">Qual é o Nivel de insalubridade ?(responda apenas se houver insalubridade)</label>
+                <input placeholder="Digite (alto) (medio) (minimo)" type="text" id="" name="nivelinsalubridade"> 
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small>Mensagem de erro</small>
+            </div>
+
+            <div class="form-control"> 
+                <label for="text">O trabalhador possui Vale Transporte ?</label>
+                <input placeholder="Digite (sim) ou (nao)" type="text" id="" name="valetransporte"> 
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small>Mensagem de erro</small>
+            </div>
+            
+            <div class="form-control"> 
+                <label for="text">O trabalhador possui Vale Alimentação ?</label>
+                <input placeholder="Digite (sim) ou (nao)." type="text" id="" name="valealimentacao"> 
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-check-circle"></i>
+                <small>Mensagem de erro</small>
+            </div>
+        
+            <button class="button" type="submit">Enviar</button>
+            
+            </form>
+        
+        <div id="mensagemFeedback"></div>
+    
+    </div>
+        
+</body>
+</html>

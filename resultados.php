@@ -33,10 +33,10 @@
     
 
     //clt
-    if($clt="sim"){
+    if($clt=="sim"){
         $cltresposta = "O trabalhador é CLT";
     }
-    else if ($clt="nao"){
+    else{
         $cltresposta =  "O trabalhador não é CLT";
     }
     
@@ -46,35 +46,47 @@
 
     //calculo fgts
     if ($clt == "sim") {
-        $fgts = ($salario * 0.08) * 12;
+        $fgts = $salario * 0.08;
+        $fgts_anual = $fgts * 12;
+    }
+    else if ($clt=="nao"){
+        $fgts = "Não possui, pois não é clt";
+        $fgts_anual = "Não possui, pois não é clt";
     }
     
     //calculo inss
     if ($clt == "sim") {
         if ($salario <= 1302.00) {
-            $inss = ($salario * 0.075) * 12 ;
+            $inss = $salario * 0.075 ;
         } else if ($salario <= 2571.29) {
-            $inss = ($salario * 0.09) * 12;
+            $inss = $salario * 0.09;
         } else if ($salario <= 3856.94) {
-            $inss = ($salario * 0.12) * 12;
+            $inss = $salario * 0.12;
         } else if ($salario <= 7507.49) {
-            $inss = ($salario * 0.14) * 12;
+            $inss = $salario * 0.14;
         } else {
-            $inss = (7507.49 * 0.14) * 12; // o valor máximo para o cálculo do INSS é R$ 7507,49
+            $inss = 7507.49 * 0.14; // o valor máximo para o cálculo do INSS é R$ 7507,49
         }
+        
+        $inss_anual = $inss * 12;
               
     }
-    else if ($clt="nao"){
+    else if ($clt=="nao"){
         $inss = "Não possui isss, pois não é clt";
+        $inss_anual = "Não possui isss, pois não é clt";
     }
 
     //calculo irrf
-    $salarioBase = ($salario * 12) - $inss;
-    $aliquota = 0;
-    $deducao = 0;
    
+    
+
     if ($clt == "sim") {
-        if ($salarioBase <= 1903.98) {
+
+        $salarioBase = $salario  - $inss ;
+        $aliquota;
+        $deducao;
+      
+    if ($salarioBase <= 1903.98) {
             $aliquota = 0;
             $deducao = 0;
         } else if ($salarioBase <= 2826.65) {
@@ -91,75 +103,62 @@
             $deducao = 869.36;
         }
    
-        $irrf = (($salarioBase * $aliquota) - $deducao) * 12;
+        $irrf = ($salarioBase * $aliquota) - $deducao;
+        $irrf_anual = $irrf * 12;
 
-        if ($irrf<=0){
-            $irrf = "salario abaixo do valor mínimo";
+        if ($irrf <= 0) {
+            $irrf = 0;
+        }
+        if ($irrf==0){
+            $irrf = "Salário abaixo do valor mímimo";
+        }
+        if ($irrf_anual==0){
+            $irrf_anual = "Salário abaixo do valor mímimo";
         }
     }
-    else if($clt="nao"){
-        $irrf = "Não possui irrf, pois não é clt";
-    }
-        //calculo de insalubridade 
-       if ($clt="sim"){ 
-        $conta;
-        if($insalubridade=="sim"){
-            if($nivelinsalubridade=="alto"){
-                $conta = 1380.60 * 0.4; 
-            }
-            if($nivelinsalubridade=="medio"){
-                $conta = 1380.60 * 0.2;
-            }
-            if($nivelinsalubridade=="minimo"){
-                $conta = 1380.60 * 0.1;
-            }
-            else if ($insalubridade="nao"){
-                $conta = "Não possui insalubridade";
-            }
-             
-        }
-    }
-    else if ($clt="nao"){
-        $conta = " Não possui insalubridade, pois não é clt";
-    }
-       
-
-        //calculo periculosidade
-        if ($periculosidade = "sim"){
-        $conta_periculosidade = ($salario * 0.4) + $salario;
-        }
-        else if ($periculosidade = "nao"){
-            $conta_periculosidade = "Não possui periculosidade";
-        }
-        //calculo vale transporte 
-        if ($valetransporte="sim"){
-           $custo = ($valordatarifa*2) * $diastrabalhados;
-           if ($descontotransporte="sim"){ 
-            
-        }
-        else if ($descontotransporte="nao"){
-            $descontotransporte1 = "Não possui desconto no salario";
-        }
-          
-        }
-        else if($valetransporte="nao") {
-            $custo = "O trabrabalhador não possui Vale Transporte";
-        }
-
-        //calculo vale alimentação
-        if ($valealimentacao="sim"){
-            
-            if ($desconto="sim"){
+    if ($clt=="nao"){
+    $irrf = "Não possui irrf, pois não é clt";
+    $irrf_anual = "Não possui irrf, pois não é clt";
+   }
+    
                 
+        //calculo vale alimentação
+        if ($valealimentacao == "sim"){
+            $calculo_alimentacao = ($valorconsumido/100) * $salario;
+            $valealimentacao_anual =  $calculo_alimentacao * 12;
+            if ($desconto == "sim"){
+                $calculo_alimentacao_desconto = ($valordesconto/100) * $salario;
+                $calculo_alimentacao_desconto_anual = $calculo_alimentacao_desconto * 12;
             }
-            else if ($desconto="nao"){
-                $calculo2 = "Não possui desconto no sálario";
+            else if ($desconto=="nao"){
+                $calculo_alimentacao_desconto = "Não possui desconto no sálario";
+                $calculo_alimentacao_desconto_anual = "Não possui desconto no sálario";
             }
         }
-        else if ($valealimentacao="nao"){
+        else if ($valealimentacao =="nao"){
+            $calculo_alimentacao = "Não possui vale alimentação";
+            $valealimentacao_anual = "Não possui vale alimentação";
+            $calculo_alimentacao_desconto = "Não possui vale alimentação";
+            $calculo_alimentacao_desconto_anual = "Não possui vale alimentação";
 
         }
     
+        //calculo vale transporte
+        if ($valetransporte=="sim"){
+            $calculo_transportes = ($valordatarifa*2) * $diastrabalhados;
+            $calculo_transportes_mensal = ($calculo_transportes / 12)." reais (valor aproximado)"; 
+            if ($descontotransporte=="sim"){
+                $calculo_transportes_desconto_anual = (($valordescontotrasnporte/100) * $salario) * 12;
+                $calculo_alimentacao_desconto_mensal = ($valordescontotrasnporte/100) * $salario;
+            }
+            else if ($descontotransporte=="nao"){
+                $calculo_transportes_desconto_anual = "Não possui desconto";
+                $calculo_transportes_mensal = "Não possui desconto";
+            }  
+        }
+        else if($valetransporte=="nao"){
+
+        }
 
     ?>
 
@@ -206,43 +205,78 @@
             <div class="Resultados"><span> <?php echo $jornadasemanal ?> horas </span></div>
         </div>
 
-        <span class="titulo_resultados">Valor do fgts no ano</span>
+        <span class="titulo_resultados">Valor do fgts mensal</span>
         <div class="resultados_tempo">
             <div class="Resultados"><span> <?php echo $fgts ?> reais </span></div>
         </div>
 
+        <span class="titulo_resultados">Valor do fgts no ano</span>
+        <div class="resultados_tempo">
+            <div class="Resultados"><span> <?php echo $fgts_anual ?> reais </span></div>
+        </div>
+
         <span class="titulo_resultados">Valor do inss no ano</span>
+        <div class="resultados_tempo">
+            <div class="Resultados"><span> <?php echo $inss_anual ?> reais </span></div>
+        </div>
+
+        <span class="titulo_resultados">Valor do inss mensal</span>
         <div class="resultados_tempo">
             <div class="Resultados"><span> <?php echo $inss ?> reais </span></div>
         </div>
 
         <span class="titulo_resultados">Valor do irrf no ano</span>
         <div class="resultados_tempo">
+            <div class="Resultados"><span> <?php echo $irrf_anual ?> reais </span></div>
+        </div>
+
+        <span class="titulo_resultados">Valor do irrf mensal</span>
+        <div class="resultados_tempo">
             <div class="Resultados"><span> <?php echo $irrf ?> reais </span></div>
         </div>
 
         <span class="titulo_resultados">valor do vale transporte anual </span>
         <div class="resultados_tempo">
-            <div class="Resultados"><span> <?php echo $custo ?> reais </span></div>
+            <div class="Resultados"><span> <?php echo $calculo_transportes ?> reais </span></div>
+        </div>
+
+        <span class="titulo_resultados">valor do vale transporte mensal </span>
+        <div class="resultados_tempo">
+            <div class="Resultados"><span> <?php echo $calculo_transportes_mensal ?> </span></div>
         </div>
 
         <span class="titulo_resultados">valor ser descontado no salario anual</span>
         <div class="resultados_tempo">
-            <div class="Resultados"><span> <?php echo $descontotrasnporte1 ?> reais </span></div>
+            <div class="Resultados"><span> <?php echo $calculo_transportes_desconto_anual ?> reais </span></div>
+        </div>
+
+        <span class="titulo_resultados">valor ser descontado no salario mensal</span>
+        <div class="resultados_tempo">
+            <div class="Resultados"><span> <?php echo $calculo_alimentacao_desconto_mensal ?> reais </span></div>
         </div>
 
         <span class="titulo_resultados">valor do vale alimentação anual </span>
         <div class="resultados_tempo">
-            <div class="Resultados"><span> <?php echo $calculo1 ?> reais </span></div>
+            <div class="Resultados"><span> <?php echo $valealimentacao_anual ?> reais </span></div>
+        </div>
+
+        <span class="titulo_resultados">valor do vale alimentação mensal </span>
+        <div class="resultados_tempo">
+            <div class="Resultados"><span> <?php echo $calculo_alimentacao ?> reais </span></div>
         </div>
 
         <span class="titulo_resultados">valor a ser descontado no salario anual</span>
         <div class="resultados_tempo">
-            <div class="Resultados"><span> <?php echo $calculo2 ?> reais </span></div>
+            <div class="Resultados"><span> <?php echo $calculo_alimentacao_desconto_anual ?> reais </span></div>
+        </div>
+
+        <span class="titulo_resultados">valor a ser descontado no salario mensalmente</span>
+        <div class="resultados_tempo">
+            <div class="Resultados"><span> <?php echo $calculo_alimentacao_desconto ?> reais </span></div>
         </div>
 
 
-        <a href="index.html">Realizar um novo calculo</a>
+        <a class="button" href="index.html">Realizar um novo calculo</a>
         <a href="resultados.php" class="button" type="submit"> sair </a>
 
     </section>

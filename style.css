@@ -23,7 +23,7 @@ body {
 
 .logoazapfy{   
     margin-top: 40px;
-    width: 150px;
+    width: 250px;
 }
 
 .formulario-orcamento{
@@ -44,41 +44,49 @@ body {
     padding: 20px;
 }
 
-.form-control{
-    margin-bottom: 10px;
-    padding-bottom: 20px;
-    position: relative;
-}
-
 .form-control label{
     display: inline-block;
     margin-bottom: 5px;
 }
-
+.form-control input:hover{
+   background-color: #FFFFE6;
+    transition: all linear ;
+}
 .form-control input{
-    border: 2px solid black;
+    border: 2px solid rgba(255,116,24,1);
     display: block;
     border-radius: 10px;
     font-size: 14px;
     width: 100%;
     padding: 10px;
+    margin-bottom: 20px;
+    margin-top: 5px;
 }
- 
-.form-control i {
-    position:absolute;
-    top: 45px;
-    right: 10px;
-    
-}
+
+ .input_alternativas {
+  margin-bottom: 10px;
+  margin-top: 2px;
+ }
+
+ .input_alternativas input{
+    width: 40px;
+ }
 
 .button{
     background-color:#ff7418;
-    border: 2px solid black;
+    border: 2px solid rgba(255,116,24,1);
+    box-shadow: -2px 3px 5px rgba(255,116,24,1);
     color: #fafafa;
     font-size: 14px;
     width: 100%;
     border-radius: 10px;
     padding: 10px;
+    margin-top: 5px;
+}
+
+.button:hover{
+    background-color: #CC5D12;
+    transition: all linear ;
 }
 
 .form-control small {

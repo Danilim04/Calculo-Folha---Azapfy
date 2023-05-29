@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculo de folha anual</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -15,117 +15,164 @@
         
         <h1 class="titulo-orcamento">Calculo de Folha Anual</h1>
         
-        <form class="form-orcamento" id="orcamentoForm" action="processar_formulario.php" method="post">
-            
-                 
+        <form class="form-orcamento" id="orcamentoForm" action="resultados.php" method="post">       
         
             <div class="form-control"> 
                 <label for="username">Digite o Nome do Trabalhador</label>
-                <input  placeholder="Digite o Nome..." type="text" id="name" name="name"> 
+                <input  required placeholder="Digite o Nome..." type="text" id="name" name="name"> 
                 <i class="fas fa-exclamation-circle"></i>
                 <i class="fas fa-check-circle"></i>
                 <small>Mensagem de erro</small>
             </div>
-    
-            
+     
+            <div class="form-control"> 
+                <label for="email">Digite o cargo do trabalhador</label>
+                <input required placeholder="Digite o cargo" type="text" id="email" name="cargo"> 
+            </div>
         
             <div class="form-control"> 
-                <label for="email">Digite O cargo do trabalhador</label>
-                <input placeholder="Digite o cargo" type="text" id="email" name="cargo"> 
-                <i class="fas fa-exclamation-circle"></i>
-                <i class="fas fa-check-circle"></i>
-                <small>Mensagem de erro</small>
+                <label>O trabalhador é CLT?</label>
+                
             </div>
-        
-            
-        
-            <div class="form-control"> 
-                <label for="telefone">O trabalhador é CLT?</label>
-                <input placeholder="Digite (sim) ou (nao)" type="text" id="telefone" name="clt"> 
-                <i class="fas fa-exclamation-circle"></i>
-                <i class="fas fa-check-circle"></i>
-                <small>Mensagem de erro</small>
+
+            <div class="input_alternativas">
+                <input required type="radio" name="clt" value="sim">
+                <label for="">Sim</label> <br>
+                <input required type="radio" name="clt" value="nao">
+                <label for="">Não</label>
             </div>
-       
-            
-        
+             
             <div class="form-control"> 
                 <label for="text">Digite o salario Bruto</label>
-                <input placeholder="Digite o salario" type="number" id="salario" name="salario"> 
-                <i class="fas fa-exclamation-circle"></i>
-                <i class="fas fa-check-circle"></i>
-                <small>Mensagem de erro</small>
+                <input required placeholder="Digite o salario" type="number" id="salario" name="salario"> 
+        
             </div>
 
             <div class="form-control"> 
                 <label for="text">Digite o Numeros de Dias Trabalhados no Ano</label>
-                <input placeholder="Digite o numero de dias" type="number" id="" name="diastrabalhados"> 
-                <i class="fas fa-exclamation-circle"></i>
-                <i class="fas fa-check-circle"></i>
-                <small>Mensagem de erro</small>
+                <input required placeholder="Digite o numero de dias" type="number" id="" name="diastrabalhados"> 
+                
             </div>
 
             <div class="form-control"> 
                 <label for="text">Digite o Ano De referencia</label>
-                <input placeholder="Digite o ano " type="text" id="" name="ano"> 
-                <i class="fas fa-exclamation-circle"></i>
-                <i class="fas fa-check-circle"></i>
-                <small>Mensagem de erro</small>
+                <input required placeholder="Digite o ano " type="number" id="" name="ano"> 
+                
             </div>
 
             <div class="form-control"> 
                 <label for="text">Digite a Carga Horaria diaria</label>
-                <input placeholder="Digite a carga em horas de um dia trabalhado" type="text" id="" name="cargahoraria"> 
-                <i class="fas fa-exclamation-circle"></i>
-                <i class="fas fa-check-circle"></i>
-                <small>Mensagem de erro</small>
+                <input required placeholder="Digite a carga em horas de um dia trabalhado" type="text" id="" name="cargahoraria"> 
+                
             </div>
 
             <div class="form-control"> 
-                <label for="text">O trabalhador possui Periculosidade ?</label>
-                <input placeholder="Digite (sim) ou (nao)" type="text" id="" name="periculosidade"> 
-                <i class="fas fa-exclamation-circle"></i>
-                <i class="fas fa-check-circle"></i>
-                <small>Mensagem de erro</small>
+                <label for="text">O trabalhador possui Periculosidade ?(Ainda não disponivel)</label> 
+            </div>
+
+            <div class="input_alternativas">
+                <input required type="radio" name="periculosidade" value="Sim">
+                <label for="">Sim</label> <br>
+                <input  type="radio" name="periculosidade" value="Não">
+                <label for="">Não</label>
             </div>
             
             <div class="form-control"> 
-                <label for="text">O trabalhador possui insalubridade?</label>
-                <input placeholder="Digite (sim) ou (nao)" type="text" id="" name="insalubridade"> 
-                <i class="fas fa-exclamation-circle"></i>
-                <i class="fas fa-check-circle"></i>
-                <small>Mensagem de erro</small>
+                <label for="text">O trabalhador possui insalubridade?( ainda não disponivel )</label> 
+            </div>
+
+            <div class="input_alternativas">
+                <input  type="radio" name="insalubridade" value="Sim">
+                <label for="">Sim</label> <br>
+                <input  type="radio" name="insalubridade" value="Não">
+                <label for="">Não</label>
             </div>
 
             <div class="form-control"> 
-                <label for="text">Qual é o Nivel de insalubridade ?(responda apenas se houver insalubridade)</label>
-                <input placeholder="Digite (alto) (medio) (minimo)" type="text" id="" name="nivelinsalubridade"> 
-                <i class="fas fa-exclamation-circle"></i>
-                <i class="fas fa-check-circle"></i>
-                <small>Mensagem de erro</small>
+                <label for="text">Qual é o Nivel de insalubridade ?</label> 
+            </div>
+
+            <div class="input_alternativas">
+                <input  type="radio" name="nivelinsalubridade" value="alto">
+                <label for="">Alto</label> <br>
+                <input  type="radio" name="nivelinsalubridade" value="medio">
+                <label for="">Médio</label> <br>
+                <input  type="radio" name="nivelinsalubridade" value="minimo"> 
+                <label for="">Mínimo</label> <br>
+                <input  type="radio" name="nivelinsalubridade" value="Não possui"> 
+                <label for="">Não possui</label>
             </div>
 
             <div class="form-control"> 
                 <label for="text">O trabalhador possui Vale Transporte ?</label>
-                <input placeholder="Digite (sim) ou (nao)" type="text" id="" name="valetransporte"> 
-                <i class="fas fa-exclamation-circle"></i>
-                <i class="fas fa-check-circle"></i>
-                <small>Mensagem de erro</small>
             </div>
+
+            <div class="input_alternativas">
+                <input  required type="radio" name="valetransporte" value="sim">
+                <label for="">Sim</label> <br>
+                <input  required type="radio" name="valetransporte" value="nao">
+                <label for="">Não</label>
+            </div>
+           
+            <div class="form-control"> 
+                <label for="text">Digite o valor da tarifa</label>
+                <input placeholder="Digite o valor da tarifa (Se houver vale transporte)" type="number" id="" name="valordatarifa">                
+            </div> 
             
             <div class="form-control"> 
+                <label for="text">Valor tera desconto no salario ? </label>
+            </div>
+
+            <div class="input_alternativas">
+                <input   type="radio" name="descontotransporte" value="sim">
+                <label for="">Sim</label> <br>
+                <input   type="radio" name="descontotransporte" value="nao">
+                <label for="">Não</label>
+            </div>
+
+            <div class="form-control"> 
+                <label for="text">Digite o valor do desconto ? </label>
+                <input placeholder="Digite o valor do desconto sem % (Se houver desconto)" type="number" id="" name="valordescontotrasnporte">                
+            </div>
+
+            <div class="form-control"> 
                 <label for="text">O trabalhador possui Vale Alimentação ?</label>
-                <input placeholder="Digite (sim) ou (nao)." type="text" id="" name="valealimentacao"> 
-                <i class="fas fa-exclamation-circle"></i>
-                <i class="fas fa-check-circle"></i>
-                <small>Mensagem de erro</small>
+            </div>
+
+            <div class="input_alternativas">
+                <input  type="radio" name="valealimentacao" value="sim">
+                <label for="">Sim</label> <br>
+                <input  type="radio" name="valealimentacao" value="nao">
+                <label for="">Não</label>
+            </div>
+
+            <div class="form-control"> 
+                <label for="text">Digite o percentual do vale no salario ? </label>
+                <input placeholder="Digite o valor do percentual (Se houver vale alimentação)" type="number" id="" name="valorconsumido">                
+            </div>
+
+            <div class="form-control"> 
+                <label for="text">O vale tera desconto no salario bruto ? </label>                
+            </div>
+
+            <div class="input_alternativas">
+                <input  required type="radio" name="desconto" value="sim">
+                <label for="">Sim</label> <br>
+                <input  required type="radio" name="desconto" value="nao">
+                <label for="">Não</label>
+            </div>
+
+            <div class="form-control"> 
+                <label for="text">Digite o valor do desconto ? </label>
+                <input placeholder="Digite o valor do desconto sem % (Se houver desconto)" type="number" id="" name="valordesconto">                
             </div>
         
-            <button class="button" type="submit">Enviar</button>
+            <button  href="exibir_dados.php" class="button" type="submit">Enviar</button>
+            
             
             </form>
         
-        <div id="mensagemFeedback"></div>
+        
     
     </div>
         
